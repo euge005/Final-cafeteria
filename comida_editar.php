@@ -6,15 +6,36 @@
     <title>Editar Comida</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
-<body>
+<body class="body">
+    <header>
+        <div class="container">
+            <div class="img1">
+                <img src="img/logo2.png" alt="Logo de la cafetería">
+            </div>
+            <div class="nombre1">
+                <h1>¡Que Cafecito!</h1>
+            </div>
+
+            <nav class="enlaces">
+                    
+                    <p><a href="Cafeteria.html">Inicio</a></p>
+                    <p><a href="menu.php">Menú</a></p>
+                    <p><a href="menu_cafeteria.php">Listado</a></p>
+                    <p><a href="form.html">Ver comida</a></p>      
+                    
+            </nav>
+    </header>
     <div class="formulario">
         <h1 class="titulo-formulario">Editar Producto del Menú</h1>
+
         <?php 
-        $id = $_GET ['id'];
+
+        $id = $_GET['id'];
         include 'abrir_base.php';
 
         $query = "SELECT * FROM producto WHERE id_prod = $id";
         $resultado = mysqli_query($conne, $query);
+        
 
         if (mysqli_num_rows($resultado) > 0) {
             $fila = mysqli_fetch_array($resultado);
@@ -28,7 +49,7 @@
         }
         mysqli_close($conne);
         ?>
-
+        
         <form action="menu_actualizar.php" method="POST">
             <label for="txtid">ID de la comida</label>
             <input type="number" name="txtid" id="txtid" value="<?php echo $id; ?>" readonly />
@@ -43,13 +64,12 @@
             <input type="number" name="precio" id="precio" step="0.01" value="<?php echo $precio; ?>" required />
 
             <div class="botones-form">
-                <input type="submit" value="Guardar" />
-                <input type="reset" value="Limpiar" />
+                <input type="reset" value="Cancelar" />
+                <input type="submit" value="Actualizar" />
+                
             </div>
 
-            <div class="volver-link">
-            <a href="menu_cafeteria.php"> Volver al listado</a>
-            </div>
+            
         </form>
     </div>
 </body>

@@ -1,32 +1,38 @@
-body {
+.body {
     font-family: 'Verdana', sans-serif;
     margin: 0;
     padding: 0;
-    background-color:#ffedd8;
-    color: #7f5539;
+    background-color:#faedcd;
+    color: #91715a;
 }
 .container {
     display: flex;
-    align-items: center; 
-    justify-content: center;
+    align-items: center;          /* Centra verticalmente el logo, el texto y los enlaces */
+    justify-content: flex-start;  /* Alinea todo el contenido hacia la izquierda */
     padding: 20px;
+    max-width: 1200px;            /* Opcional: limita el ancho máximo para que no se pegue tanto a los bordes en pantallas gigantes */
+    margin: 0 auto;
 }
+
 .img1 img {
-    max-width: 150px;
+    width: 140px; 
     height: auto;
-    margin-right: 20px;
+    margin-right: 15px;           /* Espacio entre el logo y el nombre */
     border-radius: 10px; 
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); 
+    /* box-shadow: 2px 2px 10px rgba(0, 0, 0, 50);  */
 }
-.nombre h1 {
-    margin: 0;
-    font-size: 2.5em;
-    color: #ddb892;
+
+.nombre1 h1 {
+    font-size: 2em;
+    color: #865b38;
+    margin: 0;                    /* Quita márgenes por defecto para que no altere el centrado */
 }
 .enlaces {
-    text-align: right;
-    margin-top: 20px;
+    margin-left: auto; /* Esto es lo único que agregamos para moverlo a la derecha */
+    
+    /* TODO LO DEMÁS DE LAS LÍNEAS DE ABAJO DENTRO DE .ENLACES DÉJALO EXACTAMENTE COMO LO TENÍAS */
 }
+
 .enlaces a {
     display: inline-block;
     margin: 10px;
@@ -41,41 +47,44 @@ body {
 .enlaces a:hover {
     background-color: #9c6644; 
 }
-.contenido-main {
+.contenido-main { 
     text-align: center; 
     margin: 20px auto;
-    height:150px ;
+    /* Eliminé height: 150px para que el contenido no se pise con la publicidad */
 }
+
 .contenido-main h2 {
     font-size: 1.8em;
     color: #865b38; 
 }
+
 .publicidad {
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin: 30px 0;
-    box-shadow: 0px 0px 10px 0px;
+    align-items: center;
+    margin: 30px auto; /* El 'auto' se encarga de centrar el bloque de 50% */
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    width: 50%;
 }
+
 .img-publicidad {
     display: flex; 
-    justify-content: left; 
-    align-items: right;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
 }
 
 .img-publicidad img {
-    width: 500px;
-    height: center;
+    max-width: 100%; /* Evita que la imagen se deforme o se salga de su cuadro */
+    height: auto;
+    padding: 5px;
 }
-.img1 img {
-    width: 100px; 
-}
-.publi2.h3{
+
+.publi2 h3 {
     text-align: center;
     font-size: 1.2em;
     color: #7f5539;
-    padding-left: 800px;
-    width: 900px;
+    margin-bottom: 15px; /* Eliminado el padding de 800px que rompía el diseño */
 }
 .enlaces {
     text-align: center; 
@@ -94,8 +103,37 @@ body {
     font-family: monospace;
     font-size: large;
 }
-.formulario {
 
+.contenido-footer {
+    display: flex;
+    justify-content: space-between; /* Empuja los bloques hacia los extremos */
+    align-items: center;           /* Alinea verticalmente al centro */
+    padding: 20px 40px;            /* Espacio interno para que no toque los bordes de la pantalla */
+}
+
+/* Sección de contactos (se queda a la izquierda de forma natural) */
+.contacto {
+    line-height: 1.8;              /* Un poco de espacio entre cada red social */
+    text-align: left;
+}
+
+/* El truco para el centro perfecto */
+.centro-footer {
+    display: flex;
+    flex-direction: column;        /* Pone el logo arriba y el copy abajo */
+    align-items: center;           /* Centra el texto de ambos */
+    gap: 8px;                      /* Espacio de separación entre el logo y el copyright */
+    
+    /* El secreto: los márgenes automáticos calculan el espacio disponible 
+       y clavan este bloque exactamente en el centro de la pantalla */
+    margin-left: auto;             
+    margin-right: auto;            
+}
+.contacto {
+    line-height: 2.2; /* Esto es lo único nuevo: separa las líneas de los contactos entre sí */
+}
+.formulario {
+    
     max-width: 500px;
     margin: 40px auto;
     background-color: #fef6f0;
@@ -107,6 +145,7 @@ body {
 
 .formulario form p {
     margin-bottom: 30px;
+    
 }
 
 .formulario label {
@@ -119,6 +158,7 @@ body {
 .formulario input[type="text"],
 .formulario input[type="number"],
 .formulario input[type="file"] {
+    
     width: 100%;
     padding: 10px;
     border: 1px solid #b08968;
@@ -275,10 +315,11 @@ body {
 }
 
 .recetas img {
-    max-width: 100%;
-    height: auto;
+    width: 150px;
+    height: 150px;
     border-radius: 10px;
     margin-bottom: 10px;
+    object-fit: cover;
 }
 
 .recetas h3 {
@@ -369,15 +410,31 @@ body {
 .volver-link {
     margin-top: 25px;
     text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+
 }
 
 .volver-link a {
+   
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #7f5539; 
+    color: #ede0d4; 
+    border-radius: 5px;
     text-decoration: none;
-    color: #9C6644;
-    font-weight: bold;
+    
 }
 
 .volver-link a:hover {
-    text-decoration: underline;
-    color: #7F5539;
+   
+    margin: 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #ede0d4;
+    background-color: #7f5539; 
+    transition: background-color 0.3s ease;
 }

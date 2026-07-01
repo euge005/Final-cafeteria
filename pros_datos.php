@@ -1,5 +1,22 @@
 <?php
 
+$nombre  = trim( $_POST['nom_comida']);
+$descr = trim( $_POST['desc_comida']);
+$precio = trim( $_POST['precio']);
+
+
+if ( strlen($nombre) < 2 || !preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/", $nombre)) {
+    echo'<script>alert ("El nombre no es correcto!!!");history.go(-1);</script>';
+    exit;
+}
+if (strlen($descr)<2){
+    echo'<script>alert ("La descripcion no es valida!!!");history.go(-1);</script>';
+    exit;
+}
+if(strlen($precio) == 0 || !is_numeric($precio) || $precio <= 0){ 
+    echo'<script>alert ("El precio no es valido!!!");history.go(-1);</script>';
+    exit;
+}
 
 //  include 'abrir_base.php'; 
 // //armar la query
@@ -15,31 +32,7 @@
 //     echo'<script> alert("Error al guardar la comida!");history.go(-1);</script>';
 // }
 
-// include 'abrir_base.php'; 
-
-require __DIR__ . '/config/abrir_base.php';
-
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    exit('Acceso no permitido');
-}
-
-$nombre  = $_POST['nom_comida'];
-$descr = $_POST['desc_comida'];
-$precio = $_POST['precio'];
-
-
-if (strlen($nombre)<2){
-    echo'<script>alert ("El nombre no es correcto!!!");history.go(-1);</script>';
-    exit;
-}
-if (strlen($descr)<2){
-    echo'<script>alert ("La descripcion no es valida!!!");history.go(-1);</script>';
-    exit;
-}
-if(strlen($precio)<2){ 
-    echo'<script>alert ("El precio no es valido!!!");history.go(-1);</script>';
-    exit;
-}
+include 'abrir_base.php';
 
 if ($_POST['dato'] == 'inserta-archivo') {
     
@@ -72,7 +65,7 @@ if ($_POST['dato'] == 'inserta-archivo') {
         }
     }
     $stmt->close();
-    // $conne->close();
+    $conne->close();
 }
 // mysqli_close($conne);
 ?> 

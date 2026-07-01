@@ -6,19 +6,24 @@
     <link rel="stylesheet" href="estilos.css">
     <title>¡Que Cafecito!</title>
 </head>
-<body>
+<body class="body"> 
     <header>
+        <div class="container">
+            <div class="img1">
+                <img src="img/logo2.png" alt="Logo de la cafetería">
+            </div>
             <div class="nombre1">
-            <h1> Menu ¡Que Cafecito! </h1><br>
-             <nav>
-            <ul>
-                <div class="volver-inicio">
-                 <a class="btn volver"href="Cafeteria.html">Inicio</a>
-                 <a class="btn volver" href="form.html">Cargar Datos</a>
-                 <a class="btn volver" href="menu_cafeteria.php">Listado</a>
-            </ul>
-        </nav>
-    </div>              
+                <h1>¡Que Cafecito!</h1>
+            </div>
+
+            <nav class="enlaces">
+                    
+                    <p><a href="Cafeteria.html">Inicio</a></p>
+                    <p><a href="menu.php">Menú</a></p>
+                    <p><a href="menu_cafeteria.php">Listado</a></p>
+                    <p><a href="form.html">Ver comida</a></p>      
+                   
+            </nav>
     </header>
     <main>
     <div class="blophp">
@@ -32,7 +37,7 @@ $query="SELECT * FROM cafeteria.producto order by id_prod,nombre,descri,precio";
             while($fila=mysqli_fetch_array($resultado)){
             
                 echo '<div class="recetas">';
-                echo '<img src="' . $fila['foto'] . '" alt="' . $fila['nombre'] . '" width="150">';
+                echo '<img src="' . $fila['foto'] . '" alt="' . $fila['nombre'] . '">';
                 echo '<h3>' . $fila['nombre'] . '</h3>';
                 echo '<h5>' . $fila['descri'] . '</h5>';
                 echo '<h4><i>$' . $fila['precio'] . '</i></h4>';

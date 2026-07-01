@@ -8,13 +8,31 @@
 
     <title>Formulario</title>
 </head>
-<body>
+<body class="body">
+    <header>
+        <div class="container">
+            <div class="img1">
+                <img src="img/logo2.png" alt="Logo de la cafetería">
+            </div>
+            <div class="nombre1">
+                <h1>¡Que Cafecito!</h1>
+            </div>
+
+            <nav class="enlaces">
+                    
+                    <p><a href="Cafeteria.html">Inicio</a></p>
+                    <p><a href="menu.php">Menú</a></p>
+                    <p><a href="menu_cafeteria.php">Listado</a></p>
+                    <p><a href="form.html">Ver comida</a></p>      
+                    
+            </nav>
+    </header>
     <h1>Cargar Datos</h1> 
        <div class="formulario">
         <form action="pros_datos.php" method="POST" enctype="multipart/form-data">
         <p>    
         <label for="nom_comida">Nombre comida</label>
-        <input type="text" name="nom_comida" id="nom_comida" placeholder="nombre de la comida"/> 
+        <input type="text" name="nom_comida" id="nom_comida"  placeholder="nombre de la comida"/> 
         </p>
         <p>
         <label for="desc_comida">Desc_comida</label>
@@ -32,11 +50,11 @@
         <input type="submit" value="Guardar"/>
         <input type="reset" value="Limpiar">
         <p>
-        <a href="menu_cafeteria.php">Ver Listado</a> 
-        <a href="menu.php">Ver Menu</a>
-        <a href="Cafeteria.html">Ver Inicio</a>
-        </p>
         </form>
+
      </div>
+     <script src="script.js">
+
+     </script>
 </body>
 </html>
