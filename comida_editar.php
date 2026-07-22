@@ -31,23 +31,32 @@
         <?php 
 
         $id = $_GET['id'];
-        include 'abrir_base.php';
+        
+        require __DIR__ . '/abrir_base.php';
 
-        $query = "SELECT * FROM producto WHERE id_prod = $id";
-        $resultado = mysqli_query($conne, $query);
+        $query = "SELECT * FROM producto WHERE id_prod = $id";  
+        
+        try{ 
+            $resultado = $conne->query($query);
         
 
-        if (mysqli_num_rows($resultado) > 0) {
-            $fila = mysqli_fetch_array($resultado);
-            $nombre = $fila['nombre'];
-            $descri = $fila['descri'];
-            $precio = $fila['precio']; 
-        } else {
-            $nombre = "";
-            $descri = "";
-            $precio = "";
+            if ($resultado->rowCount() > 0) {
+                while ($fila = $resultado->fetch(PDO::FETCH_BOTH)){
+                    $nombre = $fila['nombre'];
+                    $descri = $fila['descri'];
+                    $precio = $fila['precio']; 
+                }
+            } else {
+                $nombre = "";
+                $descri = "";
+                $precio = "";
+            }
+      
+    }catch (PDOException $e) {
+            // Es buena práctica envolver tus consultas en un try-catch por si falla algo en la base de datos
+            echo '<tr><td colspan="6">Error al editar los productos: ' . $e->getMessage() . '</td></tr>';
         }
-        mysqli_close($conne);
+       
         ?>
         
         <form action="menu_actualizar.php" method="POST">
@@ -68,8 +77,6 @@
                 <input type="submit" value="Actualizar" />
                 
             </div>
-
-            
         </form>
     </div>
 </body>
